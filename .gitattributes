@@ -1,0 +1,14 @@
+# Normalize line endings on commit
+* text=auto
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.svg binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
