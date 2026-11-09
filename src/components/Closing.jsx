@@ -1,6 +1,7 @@
-import { Github, Linkedin, Mail, Phone, MapPin, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { Section } from "./Ui.jsx";
 import { education, certifications, site } from "../data/site.js";
+import { openMail } from "../utils/mail.js";
 
 export function EducationCerts() {
   return (
@@ -29,23 +30,26 @@ export function EducationCerts() {
 }
 
 export function Contact() {
-  const row = "flex items-center gap-3 text-slate-300 transition-colors hover:text-cyan";
+  const row = "flex items-center gap-3 text-slate-300 transition-colors hover:text-cyan cursor-pointer";
   return (
     <Section id="contact" title="Let's talk">
       <div className="relative overflow-hidden rounded-2xl border border-line bg-panel p-8 sm:p-12">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan/5 via-transparent to-violet/5" />
         <p className="max-w-lg text-lg text-slate-300">I'm open to software engineering, Python development, and AI/ML roles. The quickest way to reach me is email.</p>
-        <a
-          href={`mailto:${site.email}?subject=Portfolio%20Contact&body=Hi%20Suryansh,`}
-          className="relative z-10 mt-8 inline-flex items-center gap-2 rounded-lg bg-cyan px-6 py-3 font-medium text-white transition-all hover:scale-105 hover:bg-violet hover:text-white"
+
+        {/* Interactive Button */}
+        <button
+          onClick={() => openMail(site.email, "Portfolio Contact", "Hi Suryansh,")}
+          className="relative z-10 mt-8 inline-flex items-center gap-2 rounded-lg bg-cyan px-6 py-3 font-medium text-ink transition-all hover:scale-105 hover:bg-white hover:shadow-[0_0_20px_-3px_#38E1FF] cursor-pointer"
         >
           <Mail size={18} /> Email me
-        </a>
+        </button>
+
         <ul className="relative z-10 mt-10 grid gap-6 sm:grid-cols-2">
           <li>
-            <a href={`mailto:${site.email}`} className={row}>
+            <button onClick={() => openMail(site.email, "Portfolio Contact", "Hi Suryansh,")} className={row}>
               <Mail size={18} className="text-cyan" /> {site.email}
-            </a>
+            </button>
           </li>
           <li><a className={row} href={`tel:${site.phone.replace(/[^+\d]/g, "")}`}><Phone size={18} className="text-cyan" /> {site.phone}</a></li>
           <li className="flex items-center gap-3 text-slate-300"><MapPin size={18} className="text-cyan" /> {site.location}</li>
