@@ -37,7 +37,7 @@ export function Contact() {
         <p className="max-w-lg text-lg text-slate-300">I'm open to software engineering, Python development, and AI/ML roles. The quickest way to reach me is email.</p>
         <a
           href={`mailto:${site.email}?subject=Portfolio%20Contact&body=Hi%20Suryansh,`}
-          className="relative z-10 mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-medium text-ink transition-all hover:scale-105 hover:bg-cyan hover:text-white"
+          className="relative z-10 mt-8 inline-flex items-center gap-2 rounded-lg bg-cyan px-6 py-3 font-medium text-white transition-all hover:scale-105 hover:bg-violet hover:text-white"
         >
           <Mail size={18} /> Email me
         </a>
