@@ -30,12 +30,8 @@ export default function App() {
   useReveal();
   return (
     <MotionConfig reducedMotion="user">
-      <div className="pointer-events-none fixed inset-0 -z-20 bg-animated" aria-hidden="true" />
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
         <div className="bg-grid absolute inset-0" />
-        <div className="glow absolute -top-40 left-1/4 h-[460px] w-[460px] rounded-full bg-cyan/25" />
-        <div className="glow absolute top-1/3 -right-24 h-[400px] w-[400px] rounded-full bg-violet/22" />
-        <div className="glow absolute bottom-0 left-1/3 h-[380px] w-[380px] rounded-full bg-pink/16" />
       </div>
       <Nav />
       <main>
