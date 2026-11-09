@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 
 export function Section({ id, title, intro, children }) {
   return (
-    <section id={id} className="scroll-mt-20 py-20 sm:py-28">
+    <section id={id} className="reveal scroll-mt-20 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.5 }}>
+        <div>
           <h2 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
           {intro && <p className="mt-3 max-w-xl text-mute">{intro}</p>}
           <div className="mt-10">{children}</div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
