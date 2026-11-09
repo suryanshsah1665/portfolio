@@ -33,15 +33,15 @@ export function Contact() {
   return (
     <Section id="contact" title="Let's talk">
       <div className="relative overflow-hidden rounded-2xl border border-line bg-panel p-8 sm:p-12">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan/5 via-transparent to-violet/5" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan/5 via-transparent to-violet/5" />
         <p className="max-w-lg text-lg text-slate-300">I'm open to software engineering, Python development, and AI/ML roles. The quickest way to reach me is email.</p>
         <a
           href={`mailto:${site.email}?subject=Portfolio%20Contact&body=Hi%20Suryansh,`}
-          className="mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-medium text-ink transition-all hover:scale-105 hover:bg-cyan hover:text-white"
+          className="relative z-10 mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-medium text-ink transition-all hover:scale-105 hover:bg-cyan hover:text-white"
         >
           <Mail size={18} /> Email me
         </a>
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2">
+        <ul className="relative z-10 mt-10 grid gap-6 sm:grid-cols-2">
           <li>
             <a href={`mailto:${site.email}`} className={row}>
               <Mail size={18} className="text-cyan" /> {site.email}
