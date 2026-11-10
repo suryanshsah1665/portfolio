@@ -7,9 +7,9 @@ export default {
         ink: "#08090B",       // Deeper, neutral black
         paper: "#0E1014",     // Slightly lighter for cards
         line: "#1A1C21",      // Subtle borders
-        mute: "#FFFFFF",      // White for secondary text
-        accent: "#00FF00",    // Neon green
-        white: "#FFFFFF",
+        mute: "#94A3B8",      // Balanced slate grey for secondary text
+        accent: "#10B981",    // Emerald mint neon green
+        white: "#F8FAFC",
       },
       fontFamily: {
         display: ["Inter", "system-ui", "sans-serif"], // Clean, non-grotesque

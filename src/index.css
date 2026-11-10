@@ -17,7 +17,7 @@ body {
 }
 
 h1, h2, h3 { letter-spacing: -0.04em; }
-.text-mute { color: #636E7B; }
+.text-mute { color: #94A3B8; }
 
 .unslop-card {
   @apply border border-line bg-paper p-6 relative transition-all;
@@ -27,4 +27,4 @@ h1, h2, h3 { letter-spacing: -0.04em; }
   @apply absolute top-0 left-0 w-full h-[1px] bg-line;
 }
 
-::selection { background: #00FF0033; }
+::selection { background: #10B98133; }
