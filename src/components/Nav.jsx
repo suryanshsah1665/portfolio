@@ -31,12 +31,36 @@ export default function Nav() {
       </nav>
       <AnimatePresence>
         {open && (
-          <motion.ul initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden border-t border-line bg-ink md:hidden">
-            {links.map((l) => (
-              <li key={l}><a href={href(l)} onClick={() => setOpen(false)} className="block px-5 py-3 text-slate-300 hover:text-accent">{l}</a></li>
-            ))}
-            <li><a href={site.resume} download onClick={() => setOpen(false)} className="block px-5 py-3 text-accent">Resume</a></li>
-          </motion.ul>
+          <motion.div
+            initial={{ height: 0, opacity: 0, y: -10 }}
+            animate={{ height: "auto", opacity: 1, y: 0 }}
+            exit={{ height: 0, opacity: 0, y: -10 }}
+            className="overflow-hidden border-t border-line bg-ink md:hidden transition-all duration-300 ease-in-out"
+          >
+            <motion.ul className="overflow-hidden">
+              {links.map((l) => (
+                <motion.li
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ delay: 0.1 * links.indexOf(l) }}
+                  key={l}
+                  className="block px-5 py-3 text-slate-300 hover:text-accent"
+                >
+                  <a href={href(l)} onClick={() => setOpen(false)}>{l}</a>
+                </motion.li>
+              ))}
+              <motion.li
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ delay: 0.1 * links.length }}
+                className="block px-5 py-3 text-accent"
+              >
+                <a href={site.resume} download onClick={() => setOpen(false)}>Resume</a>
+              </motion.li>
+            </motion.ul>
+          </motion.div>
         )}
       </AnimatePresence>
     </header>
