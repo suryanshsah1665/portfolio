@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, FileText } from "lucide-react";
 import { site } from "../data/site.js";
 
 const links = ["Home", "About", "Skills", "Experience", "Projects", "Contact"];
