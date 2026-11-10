@@ -9,7 +9,7 @@ const lines = [
   [["pl", '  status = '], ["st", '"open_for_hire"']],
   [["pl", "}"]]
 ];
-const color = { kw: "text-accent", st: "text-emerald-400", pl: "text-slate-300" };
+const color = { kw: "text-accent", st: "text-accent", pl: "text-slate-300" };
 
 export default function Hero() {
   return (
@@ -45,7 +45,7 @@ export default function Hero() {
         <div className="border border-line bg-paper p-5 font-mono text-xs leading-6 shadow-2xl">
           <div className="flex items-center justify-between border-b border-line pb-3 mb-3 text-mute">
             <span>profile.py</span>
-            <span className="text-[10px] text-emerald-400">active</span>
+            <span className="text-[10px] text-accent">active</span>
           </div>
           <pre className="overflow-x-auto text-slate-300">
             {lines.map((l, i) => (

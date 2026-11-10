@@ -6,11 +6,11 @@ import { featured, others } from "../data/site.js";
 function InvoiceVisual() {
   return (
     <div className="mx-auto w-56 rounded-lg bg-paper p-4 shadow-2xl" aria-hidden="true">
-      <div className="flex items-center justify-between"><div className="h-2.5 w-14 rounded bg-slate-800" /><div className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-semibold text-ink">PDF</div></div>
-      <div className="mt-4 space-y-1.5"><div className="h-1.5 w-24 rounded bg-slate-300" /><div className="h-1.5 w-16 rounded bg-slate-300" /></div>
+      <div className="flex items-center justify-between"><div className="h-2.5 w-14 rounded bg-[#222222]" /><div className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-semibold text-[#08090B]">PDF</div></div>
+      <div className="mt-4 space-y-1.5"><div className="h-1.5 w-24 rounded bg-[#CCCCCC]" /><div className="h-1.5 w-16 rounded bg-[#CCCCCC]" /></div>
       <div className="mt-5 space-y-2.5">{[40, 32, 36].map((w, i) => (
-        <div key={i} className="flex justify-between"><div className="h-1.5 rounded bg-slate-300" style={{ width: `${w}%` }} /><div className="h-1.5 w-8 rounded bg-slate-400" /></div>))}</div>
-      <div className="mt-5 flex justify-end border-t border-slate-300 pt-3"><div className="h-2.5 w-16 rounded bg-slate-800" /></div>
+        <div key={i} className="flex justify-between"><div className="h-1.5 rounded bg-[#CCCCCC]" style={{ width: `${w}%` }} /><div className="h-1.5 w-8 rounded bg-[#999999]" /></div>))}</div>
+      <div className="mt-5 flex justify-end border-t border-[#333333] pt-3"><div className="h-2.5 w-16 rounded bg-[#222222]" /></div>
     </div>
   );
 }

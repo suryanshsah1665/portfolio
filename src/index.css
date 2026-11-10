@@ -27,4 +27,4 @@ h1, h2, h3 { letter-spacing: -0.04em; }
   @apply absolute top-0 left-0 w-full h-[1px] bg-line;
 }
 
-::selection { background: #38E1FF33; }
+::selection { background: #00FF0033; }
