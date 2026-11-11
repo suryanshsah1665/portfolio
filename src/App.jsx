@@ -28,6 +28,15 @@ function useReveal() {
 
 export default function App() {
   useReveal();
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollProgress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      document.documentElement.style.setProperty("--scroll-progress", Math.min(scrollProgress, 1).toString());
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <MotionConfig reducedMotion="user">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
