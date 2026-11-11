@@ -10,12 +10,23 @@ html {
 }
 
 body {
-  @apply bg-ink text-white font-sans antialiased;
+  @apply bg-black text-green-400 font-mono antialiased;
   position: relative;
   overflow-x: hidden;
+  /* Scanline overlay for CRT/terminal effect */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  background-size: 100% 3px;
+  background-blend-mode: overlay;
 }
 
-/* ===== Zebra Crossing Background ===== */
+/* ===== Glowing Green Grid Background ===== */
 body::before {
   content: "";
   position: fixed;
@@ -23,23 +34,21 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Black & white zebra stripes */
-  background-image: repeating-linear-gradient(
-    45deg,
-    #000000 0px,
-    #000000 10px,
-    #FFFFFF 10px,
-    #FFFFFF 20px
-  );
-  background-size: 28px 28px;
-  opacity: 0.06;
+  background-image:
+    linear-gradient(rgba(0, 255, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
   pointer-events: none;
   z-index: -2;
-  /* Scroll-driven movement: stripes drift as you scroll */
-  animation: zebraScroll 8s linear infinite;
+  animation: gridPulse 4s ease-in-out infinite alternate;
 }
 
-/* ===== Top-to-Bottom Gradient with Scroll Color Shift ===== */
+@keyframes gridPulse {
+  0%   { opacity: 0.5; }
+  100% { opacity: 0.9; }
+}
+
+/* ===== Ambient Green Glow ===== */
 body::after {
   content: "";
   position: fixed;
@@ -47,38 +56,106 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Gradient from top to bottom: emerald tint fading into deep black.
-     The emerald intensity is driven by the --scroll-progress CSS variable
-     (set by App.jsx based on real scroll position). */
-  background: linear-gradient(
-    180deg,
-    rgba(16, 185, 129, calc(0.06 + var(--scroll-progress, 0) * 0.12)) 0%,
-    rgba(16, 185, 129, calc(0.02 + var(--scroll-progress, 0) * 0.06)) 30%,
-    rgba(8, 9, 11, calc(0.4 + var(--scroll-progress, 0) * 0.3)) 60%,
-    rgba(8, 9, 11, calc(0.85 + var(--scroll-progress, 0) * 0.1)) 100%
-  );
+  background: radial-gradient(circle at 50% 0%, rgba(0, 255, 0, 0.08) 0%, transparent 60%);
   pointer-events: none;
   z-index: -1;
-  mix-blend-mode: overlay;
-  transition: background 0.1s linear;
+  mix-blend-mode: screen;
 }
 
-/* Zebra stripes drift downward, creating a scrolling illusion */
-@keyframes zebraScroll {
-  0%   { background-position: 0 0; }
-  100% { background-position: 28px 28px; }
+/* ===== Terminal Card (Hud-style) ===== */
+.terminal-card {
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 6px;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow:
+    0 0 15px rgba(0, 255, 0, 0.1),
+    inset 0 0 20px rgba(0, 255, 0, 0.03);
+  transition: all 0.3s ease;
 }
 
-/* ===== Card Polish ===== */
-.unslop-card {
-  @apply border border-line bg-paper/80 backdrop-blur-xl p-8 rounded-2xl relative transition-all duration-300 shadow-xl hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1;
-}
-.unslop-card::before {
-  content: '';
-  @apply absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/60 to-transparent opacity-0 transition-opacity duration-300;
-}
-.unslop-card:hover::before {
-  opacity: 1;
+.terminal-card:hover {
+  border-color: rgba(0, 255, 0, 0.6);
+  box-shadow:
+    0 0 25px rgba(0, 255, 0, 0.25),
+    inset 0 0 30px rgba(0, 255, 0, 0.05);
 }
 
-::selection { background: #10B98133; }
+/* Corner brackets (Hud corners) */
+.terminal-card::before,
+.terminal-card::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(0, 255, 0, 0.8);
+  transition: all 0.3s ease;
+}
+
+.terminal-card::before {
+  top: 6px;
+  left: 6px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.terminal-card::after {
+  bottom: 6px;
+  right: 6px;
+  border-left: none;
+  border-top: none;
+}
+
+.terminal-card:hover::before,
+.terminal-card:hover::after {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(0, 255, 0, 0.3);
+  color: #00FF00;
+}
+
+/* ===== Scrollbar (green terminal style) ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 0, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 0, 0.6);
+}
+
+/* ===== Utility: green glow text ===== */
+.glow-text {
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+/* ===== Utility: green glow button ===== */
+.glow-button {
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.3);
+  transition: all 0.3s ease;
+}
+.glow-button:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.8), inset 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+/* ===== Blinking cursor ===== */
+.cursor-blink::after {
+  content: "█";
+  animation: blink 1s step-start infinite;
+  color: #00FF00;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}

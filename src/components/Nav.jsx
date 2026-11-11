@@ -10,22 +10,22 @@ export default function Nav() {
   const href = (l) => `#${l.toLowerCase()}`;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-ink/75 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-accent/30 bg-black/80 backdrop-blur-md shadow-[0_0_20px_rgba(0,255,0,0.1)]">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <a href="#home" className="font-display text-lg font-semibold text-white">
-          <span className="text-accent">Suryansh</span>.
+        <a href="#home" className="font-display text-lg font-semibold text-accent glow-text">
+          <span>&gt;</span> suryansh<span className="text-mute">.dev</span>
         </a>
         <ul className="hidden items-center gap-7 md:flex">
           {links.map((l) => (
-            <li key={l}><a href={href(l)} className="text-sm text-mute transition-colors hover:text-accent">{l}</a></li>
+            <li key={l}><a href={href(l)} className="text-sm text-mute transition-colors hover:text-accent hover:drop-shadow-[0_0_8px_rgba(0,255,0,0.6)]">{l}</a></li>
           ))}
           <li>
-            <a href={site.resume} download className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-sm text-accent transition-colors hover:bg-accent/20">
+            <a href={site.resume} download className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-sm text-accent transition-colors hover:bg-accent/20 hover:shadow-[0_0_15px_rgba(0,255,0,0.4)]">
               <FileText size={14} /> Resume
             </a>
           </li>
         </ul>
-        <button className="md:hidden text-slate-200" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"}>
+        <button className="md:hidden text-accent" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"}>
           {open ? <X /> : <Menu />}
         </button>
       </nav>
@@ -35,7 +35,7 @@ export default function Nav() {
             initial={{ height: 0, opacity: 0, y: -10 }}
             animate={{ height: "auto", opacity: 1, y: 0 }}
             exit={{ height: 0, opacity: 0, y: -10 }}
-            className="overflow-hidden border-t border-line bg-ink md:hidden transition-all duration-300 ease-in-out"
+            className="overflow-hidden border-t border-accent/20 bg-black/95 md:hidden transition-all duration-300 ease-in-out"
           >
             <motion.ul className="overflow-hidden">
               {links.map((l) => (
@@ -45,7 +45,7 @@ export default function Nav() {
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ delay: 0.1 * links.indexOf(l) }}
                   key={l}
-                  className="block px-5 py-3 text-slate-300 hover:text-accent"
+                  className="block px-5 py-3 text-mute hover:text-accent"
                 >
                   <a href={href(l)} onClick={() => setOpen(false)}>{l}</a>
                 </motion.li>
